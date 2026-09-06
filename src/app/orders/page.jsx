@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getOrdersForUser } from "@/lib/repositories/orders";
-import { formatCents, formatDateTime } from "@/lib/format";
+import { formatCents, formatDateTime } from "@/lib/formatters";
 import styles from "./orders.module.css";
 
 export const dynamic = "force-dynamic";

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getReservations } from "@/lib/repositories/account";
-import ReservationForm from "./ReservationForm";
-import { formatDateTime } from "@/lib/format";
+import BookingForm from "./BookingForm";
+import { formatDateTime } from "@/lib/formatters";
 import styles from "./reservations.module.css";
 
 export const dynamic = "force-dynamic";
@@ -36,7 +36,7 @@ export default async function ReservationsPage() {
       <div className={styles.grid}>
         <section className={`card ${styles.formPanel}`}>
           <h2 className={styles.panelTitle}>Book a table</h2>
-          <ReservationForm />
+          <BookingForm />
         </section>
 
         <section>

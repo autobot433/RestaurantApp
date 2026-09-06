@@ -1,7 +1,7 @@
 import { getSupabaseServerClient } from "../supabase/server";
 import { getSupabaseAdminClient } from "../supabase/admin";
 import { getItemsByIds } from "./menu";
-import { TAX_RATE } from "../config";
+import { TAX_RATE } from "../appConfig";
 
 /**
  * Lists the current user's orders (with line items). RLS guarantees only the

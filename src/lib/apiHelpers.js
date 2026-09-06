@@ -1,6 +1,6 @@
 import "server-only";
 import { getSupabaseServerClient, getAuthenticatedUser } from "./supabase/server";
-import { ValidationError } from "./security/validation";
+import { ValidationError } from "./security/validators";
 
 /** Uniform JSON error response. */
 export function jsonError(message, status = 400) {

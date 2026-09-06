@@ -1,6 +1,6 @@
-import { requireUser, withErrorHandling } from "@/lib/api";
+import { requireUser, withErrorHandling } from "@/lib/apiHelpers";
 import { getOrdersForUser } from "@/lib/repositories/orders";
-import { enforceRateLimit } from "@/lib/security/rateLimit";
+import { enforceRateLimit } from "@/lib/security/rateLimiter";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { cleanString, optionalPhone, ValidationError } from "@/lib/security/validation";
+import { cleanString, optionalPhone, ValidationError } from "@/lib/security/validators";
 
-export default function ProfileForm({ initial }) {
+export default function AccountProfileForm({ initial }) {
   const [fullName, setFullName] = useState(initial.full_name);
   const [phone, setPhone] = useState(initial.phone);
   const [loading, setLoading] = useState(false);

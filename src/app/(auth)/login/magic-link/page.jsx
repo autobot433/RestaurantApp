@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import AuthShell from "@/components/auth/AuthShell";
+import AuthLayout from "@/components/auth/AuthLayout";
 import { getSupabaseClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/config";
-import { requireEmail, ValidationError } from "@/lib/security/validation";
+import { isSupabaseConfigured } from "@/lib/appConfig";
+import { requireEmail, ValidationError } from "@/lib/security/validators";
 
 export default function MagicLinkPage() {
   const [email, setEmail] = useState("");
@@ -46,7 +46,7 @@ export default function MagicLinkPage() {
   }
 
   return (
-    <AuthShell
+    <AuthLayout
       title="Email me a link"
       subtitle="We'll send a secure sign-in link to your inbox — no password needed."
       footer={<Link href="/login">← Back to sign in</Link>}
@@ -77,6 +77,6 @@ export default function MagicLinkPage() {
           </button>
         </form>
       )}
-    </AuthShell>
+    </AuthLayout>
   );
 }

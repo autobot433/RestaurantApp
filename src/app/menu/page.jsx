@@ -1,7 +1,7 @@
 import { getMenu } from "@/lib/repositories/menu";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getFavorites } from "@/lib/repositories/account";
-import MenuItemCard from "@/components/MenuItemCard";
+import DishCard from "@/components/DishCard";
 import styles from "./menu.module.css";
 
 export const dynamic = "force-dynamic";
@@ -53,7 +53,7 @@ export default async function MenuPage() {
           </div>
           <div className={styles.grid}>
             {cat.items.map((item) => (
-              <MenuItemCard
+              <DishCard
                 key={item.id}
                 item={item}
                 initialFavorite={favoriteIds.has(item.id)}

@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import AuthShell from "@/components/auth/AuthShell";
+import AuthLayout from "@/components/auth/AuthLayout";
 import { getSupabaseClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/config";
-import { requirePassword, assert, ValidationError } from "@/lib/security/validation";
+import { isSupabaseConfigured } from "@/lib/appConfig";
+import { requirePassword, assert, ValidationError } from "@/lib/security/validators";
 
 export default function ChangePasswordPage() {
   const router = useRouter();
@@ -57,7 +57,7 @@ export default function ChangePasswordPage() {
   }
 
   return (
-    <AuthShell
+    <AuthLayout
       title="Change password"
       subtitle="Choose a new password for your account."
       footer={<Link href="/account">← Back to account</Link>}
@@ -85,6 +85,6 @@ export default function ChangePasswordPage() {
           </button>
         </form>
       )}
-    </AuthShell>
+    </AuthLayout>
   );
 }

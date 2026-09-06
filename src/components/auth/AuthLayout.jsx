@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./auth.module.css";
 
-export default function AuthShell({ title, subtitle, children, footer }) {
+export default function AuthLayout({ title, subtitle, children, footer }) {
   return (
     <div className={styles.wrap}>
       <section className={`card ${styles.cardBox}`}>

@@ -3,16 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import AuthShell from "@/components/auth/AuthShell";
+import AuthLayout from "@/components/auth/AuthLayout";
 import { getSupabaseClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/config";
+import { isSupabaseConfigured } from "@/lib/appConfig";
 import {
   requireEmail,
   requirePassword,
   cleanString,
   assert,
   ValidationError,
-} from "@/lib/security/validation";
+} from "@/lib/security/validators";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -73,7 +73,7 @@ export default function SignupPage() {
   }
 
   return (
-    <AuthShell
+    <AuthLayout
       title="Join Freshly"
       subtitle="Create an account to start ordering and earning rewards."
       footer={
@@ -118,6 +118,6 @@ export default function SignupPage() {
           {loading ? <span className="spinner" /> : "Create account"}
         </button>
       </form>
-    </AuthShell>
+    </AuthLayout>
   );
 }

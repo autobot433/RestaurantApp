@@ -7,9 +7,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
 import { selectItems, selectSubtotalCents, clearCart } from "@/store/cartSlice";
 import { getStripePromise } from "@/lib/stripe/client";
-import { formatCents } from "@/lib/format";
-import { TAX_RATE } from "@/lib/config";
-import PaymentStep from "./PaymentStep";
+import { formatCents } from "@/lib/formatters";
+import { TAX_RATE } from "@/lib/appConfig";
+import StripePaymentForm from "./StripePaymentForm";
 import styles from "./checkout.module.css";
 
 const TIP_OPTIONS = [0, 0.15, 0.18, 0.2];
@@ -158,7 +158,7 @@ export default function CheckoutPage() {
                   },
                 }}
               >
-                <PaymentStep onPaid={onPaid} />
+                <StripePaymentForm onPaid={onPaid} />
               </Elements>
             </div>
           ) : (

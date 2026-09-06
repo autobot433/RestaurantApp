@@ -2,8 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getProfile, getRewards } from "@/lib/repositories/account";
-import ProfileForm from "./ProfileForm";
-import { formatCents } from "@/lib/format";
+import AccountProfileForm from "./AccountProfileForm";
+import { formatCents } from "@/lib/formatters";
 import styles from "./account.module.css";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +29,7 @@ export default async function AccountPage() {
       <div className={styles.grid}>
         <section className={`card ${styles.panel}`}>
           <h2 className={styles.panelTitle}>Profile</h2>
-          <ProfileForm
+          <AccountProfileForm
             initial={{
               full_name: profile?.full_name || "",
               phone: profile?.phone || "",

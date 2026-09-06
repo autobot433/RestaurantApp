@@ -7,8 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { ShoppingBag, Menu as MenuIcon, X } from "lucide-react";
 import { getSupabaseClient } from "@/lib/supabase/client";
 import { selectCount, openCart } from "@/store/cartSlice";
-import { isSupabaseConfigured } from "@/lib/config";
-import styles from "./Nav.module.css";
+import { isSupabaseConfigured } from "@/lib/appConfig";
+import styles from "./SiteHeader.module.css";
 
 const links = [
   { href: "/menu", label: "Menu" },
@@ -16,7 +16,7 @@ const links = [
   { href: "/rewards", label: "Rewards" },
 ];
 
-export default function Nav() {
+export default function SiteHeader() {
   const dispatch = useDispatch();
   const count = useSelector(selectCount);
   const pathname = usePathname();

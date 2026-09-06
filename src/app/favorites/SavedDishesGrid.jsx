@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { Plus, Trash2 } from "lucide-react";
 import { addItem } from "@/store/cartSlice";
-import { formatCents } from "@/lib/format";
+import { formatCents } from "@/lib/formatters";
 import styles from "./favorites.module.css";
 
-export default function FavoritesGrid({ initialItems }) {
+export default function SavedDishesGrid({ initialItems }) {
   const dispatch = useDispatch();
   const [items, setItems] = useState(initialItems);
 

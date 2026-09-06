@@ -9,7 +9,7 @@ implemented in the codebase, so a reviewer can verify it directly.
 |---|-------------|--------|-------|
 | 1 | **Row-Level Security on every table** | ✅ | `supabase/migrations/20260101000100_row_level_security.sql` — RLS `enable` + `force` on all tables |
 | 2 | **Per-user read/write policies (no cross-user access)** | ✅ | Same file — every user-owned table gates on `auth.uid() = user_id` |
-| 3 | **Rate limiting per route** | ✅ | `src/lib/security/rateLimit.js`, applied in every mutating API route |
+| 3 | **Rate limiting per route** | ✅ | `src/lib/security/rateLimiter.js`, applied in every mutating API route |
 | 4 | **Move keys/secrets server-side** | ✅ | `src/lib/supabase/admin.js`, `src/lib/stripe/server.js` (both `import "server-only"`); `.env.example` documents public vs secret |
 | 5 | **Hide API keys** | ✅ | Only `NEXT_PUBLIC_*` publishable values reach the browser; service role / Stripe secret are server-only |
 | 6 | **Purge git secrets** | ✅ | Verified: no secret ever committed (see "Git history" below); `.gitignore` covers `.env*.local`, keys, `*.pem` |
@@ -22,7 +22,7 @@ implemented in the codebase, so a reviewer can verify it directly.
 | 13 | **Hash passwords** | ✅ | Handled by Supabase Auth (bcrypt); the app never sees or stores raw passwords |
 | 14 | **Bot protection** | ✅ | Rate limiting (#3) + honeypot fields on auth forms + phone/email OTP; see "Going further" for CAPTCHA |
 | 15 | **Parameterized queries** | ✅ | All DB access goes through the Supabase query builder (parameterized); no raw SQL string concatenation anywhere |
-| 16 | **Validate all input** | ✅ | `src/lib/security/validation.js` on every request body, plus Postgres `CHECK` constraints in the schema migration |
+| 16 | **Validate all input** | ✅ | `src/lib/security/validators.js` on every request body, plus Postgres `CHECK` constraints in the schema migration |
 | 17 | **Escape user content** | ✅ | React auto-escapes all rendered output; no `dangerouslySetInnerHTML` anywhere in the app |
 | 18 | **Restrict file uploads** | ✅ (N/A surface) | The app has no user file-upload feature, so there is no upload attack surface. Guidance for adding one safely is below |
 | 19 | **Trim API responses** | ✅ | Every query selects explicit columns (no `select *`); response payloads are minimal |
@@ -66,7 +66,7 @@ ever committed in future, rotate it immediately and purge with
 `git filter-repo`.
 
 ### Rate limiting
-`rateLimit()` is a fixed-window limiter keyed by client IP + route. Applied to:
+`rateLimit()` in `rateLimiter.js` is a fixed-window limiter keyed by client IP + route. Applied to:
 `POST /api/checkout` (10/min), `POST /api/reservations` (15/min),
 `PATCH /api/account` (30/min), `GET /api/orders` (60/min),
 `POST|DELETE /api/favorites` (60/min). The default implementation is in-memory

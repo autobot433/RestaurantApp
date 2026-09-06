@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Cormorant_Garamond, Jost } from "next/font/google";
-import Providers from "@/components/providers/Providers";
-import Nav from "@/components/Nav";
-import CartDrawer from "@/components/CartDrawer";
+import AppProviders from "@/components/providers/AppProviders";
+import SiteHeader from "@/components/SiteHeader";
+import CartPanel from "@/components/CartPanel";
 
 const fontDisplay = Cormorant_Garamond({
   subsets: ["latin"],
@@ -42,14 +42,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
       <body>
-        <Providers>
+        <AppProviders>
           <div className="page-wrap">
-            <Nav />
+            <SiteHeader />
             <main className="page-main">{children}</main>
             <SiteFooter />
           </div>
-          <CartDrawer />
-        </Providers>
+          <CartPanel />
+        </AppProviders>
       </body>
     </html>
   );

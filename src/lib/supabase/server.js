@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/auth-helpers-nextjs";
-import { isSupabaseConfigured } from "../config";
+import { isSupabaseConfigured } from "../appConfig";
 
 /**
  * Cookie hardening for the auth session cookies.

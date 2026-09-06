@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { Plus, Heart } from "lucide-react";
 import { addItem } from "@/store/cartSlice";
-import { formatCents } from "@/lib/format";
-import { isUuid } from "@/lib/security/validation";
-import styles from "./MenuItemCard.module.css";
+import { formatCents } from "@/lib/formatters";
+import { isUuid } from "@/lib/security/validators";
+import styles from "./DishCard.module.css";
 
 const TAG_LABELS = { v: "Vegetarian", gf: "Gluten-free", na: "Zero-proof" };
 
-export default function MenuItemCard({ item, initialFavorite = false }) {
+export default function DishCard({ item, initialFavorite = false }) {
   const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(initialFavorite);
   const [busy, setBusy] = useState(false);

@@ -28,7 +28,7 @@ Freshly is a full-stack restaurant ordering app. Users can create an account, br
 src/app/                   Routes (App Router)
 src/app/(auth)/            Login, signup, magic-link, phone, change-password
 src/app/api/               Route handlers (rate-limited, auth-checked)
-src/components/            Nav, cart drawer, menu cards, auth shell
+src/components/            Site header, cart panel, dish cards, auth layout
 src/lib/supabase/          Client (anon key), server (RLS-scoped), admin (service role)
 src/lib/repositories/      Data access layer, explicit column selects
 src/lib/security/          Rate limiting, input validation

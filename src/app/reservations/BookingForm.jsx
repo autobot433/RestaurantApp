@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { requireInt, assert, cleanString, ValidationError } from "@/lib/security/validation";
+import { requireInt, assert, cleanString, ValidationError } from "@/lib/security/validators";
 
-export default function ReservationForm() {
+export default function BookingForm() {
   const router = useRouter();
   const [partySize, setPartySize] = useState(2);
   const [when, setWhen] = useState("");

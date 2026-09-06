@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getFavorites } from "@/lib/repositories/account";
-import FavoritesGrid from "./FavoritesGrid";
+import SavedDishesGrid from "./SavedDishesGrid";
 import styles from "./favorites.module.css";
 
 export const dynamic = "force-dynamic";
@@ -38,7 +38,7 @@ export default async function FavoritesPage() {
           </Link>
         </div>
       ) : (
-        <FavoritesGrid initialItems={items} />
+        <SavedDishesGrid initialItems={items} />
       )}
     </div>
   );

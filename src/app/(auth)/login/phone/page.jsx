@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import AuthShell from "@/components/auth/AuthShell";
+import AuthLayout from "@/components/auth/AuthLayout";
 import { getSupabaseClient } from "@/lib/supabase/client";
-import { isSupabaseConfigured } from "@/lib/config";
-import { assert, ValidationError } from "@/lib/security/validation";
+import { isSupabaseConfigured } from "@/lib/appConfig";
+import { assert, ValidationError } from "@/lib/security/validators";
 
 const PHONE_RE = /^\+[1-9][0-9]{7,14}$/;
 
@@ -70,7 +70,7 @@ export default function PhoneLoginPage() {
   }
 
   return (
-    <AuthShell
+    <AuthLayout
       title="Sign in with phone"
       subtitle={stage === "phone" ? "We'll text you a one-time code." : `Enter the code sent to ${phone}.`}
       footer={<Link href="/login">← Back to sign in</Link>}
@@ -98,6 +98,6 @@ export default function PhoneLoginPage() {
           </button>
         </form>
       )}
-    </AuthShell>
+    </AuthLayout>
   );
 }

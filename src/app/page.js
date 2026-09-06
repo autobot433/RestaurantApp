@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles, Gift, CalendarClock } from "lucide-react";
 import { getMenu } from "@/lib/repositories/menu";
-import MenuItemCard from "@/components/MenuItemCard";
+import DishCard from "@/components/DishCard";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -75,7 +75,7 @@ export default async function Home() {
           </div>
           <div className={styles.grid}>
             {featured.map((item) => (
-              <MenuItemCard key={item.id} item={item} />
+              <DishCard key={item.id} item={item} />
             ))}
           </div>
         </section>

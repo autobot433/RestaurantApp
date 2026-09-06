@@ -8,7 +8,7 @@ import { hydrate } from "@/store/cartSlice";
 
 const CART_KEY = "freshly.cart.v1";
 
-export default function Providers({ children }) {
+export default function AppProviders({ children }) {
   const storeRef = useRef(null);
   if (!storeRef.current) storeRef.current = makeStore();
 

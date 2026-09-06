@@ -1,6 +1,6 @@
 import { getSupabaseServerClient } from "../supabase/server";
-import { isSupabaseConfigured } from "../config";
-import { sampleMenu } from "../data/sampleMenu";
+import { isSupabaseConfigured } from "../appConfig";
+import { sampleMenu } from "../data/demoMenu";
 
 /**
  * Loads the public menu grouped by category. Selects only the columns the UI

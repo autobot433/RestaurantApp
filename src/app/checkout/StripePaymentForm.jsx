@@ -8,7 +8,7 @@ import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
  * parent clears the cart and navigates away; the Stripe webhook is what
  * actually marks the order paid + awards points server-side.
  */
-export default function PaymentStep({ onPaid }) {
+export default function StripePaymentForm({ onPaid }) {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");

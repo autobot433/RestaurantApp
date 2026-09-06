@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/auth-helpers-nextjs";
-import { isSupabaseConfigured } from "@/lib/config";
+import { isSupabaseConfigured } from "@/lib/appConfig";
 
 const protectedPaths = [
   "/account",

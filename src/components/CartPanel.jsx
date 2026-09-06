@@ -11,10 +11,10 @@ import {
   removeItem,
   closeCart,
 } from "@/store/cartSlice";
-import { formatCents } from "@/lib/format";
-import styles from "./CartDrawer.module.css";
+import { formatCents } from "@/lib/formatters";
+import styles from "./CartPanel.module.css";
 
-export default function CartDrawer() {
+export default function CartPanel() {
   const dispatch = useDispatch();
   const router = useRouter();
   const isOpen = useSelector((s) => s.cart.isOpen);

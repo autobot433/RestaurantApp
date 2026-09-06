@@ -1,6 +1,6 @@
-import { requireUser, readJson, withErrorHandling } from "@/lib/api";
-import { enforceRateLimit } from "@/lib/security/rateLimit";
-import { requireUuid } from "@/lib/security/validation";
+import { requireUser, readJson, withErrorHandling } from "@/lib/apiHelpers";
+import { enforceRateLimit } from "@/lib/security/rateLimiter";
+import { requireUuid } from "@/lib/security/validators";
 import { addFavorite, removeFavorite } from "@/lib/repositories/account";
 
 export const runtime = "nodejs";
