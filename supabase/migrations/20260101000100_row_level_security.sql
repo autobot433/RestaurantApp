@@ -1,5 +1,5 @@
 -- =============================================================================
--- Ahar — Row-Level Security
+-- Freshly — Row-Level Security
 -- =============================================================================
 -- RLS is enabled on EVERY table. With RLS on and no matching policy, Postgres
 -- denies by default, so the policies below are the ONLY way rows become visible

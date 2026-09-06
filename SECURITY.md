@@ -1,4 +1,4 @@
-# Ahar — Security Overview
+# Freshly — Security Overview
 
 This document maps each security requirement to exactly how and where it is
 implemented in the codebase, so a reviewer can verify it directly.

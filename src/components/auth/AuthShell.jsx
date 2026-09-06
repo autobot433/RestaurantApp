@@ -6,7 +6,7 @@ export default function AuthShell({ title, subtitle, children, footer }) {
     <div className={styles.wrap}>
       <section className={`card ${styles.cardBox}`}>
         <Link href="/" className={styles.brand}>
-          Ahar
+          Freshly
         </Link>
         <h1 className={styles.title}>{title}</h1>
         {subtitle && <p className={styles.subtitle}>{subtitle}</p>}

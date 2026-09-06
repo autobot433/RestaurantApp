@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { makeStore } from "@/store";
 import { hydrate } from "@/store/cartSlice";
 
-const CART_KEY = "ahar.cart.v1";
+const CART_KEY = "freshly.cart.v1";
 
 export default function Providers({ children }) {
   const storeRef = useRef(null);

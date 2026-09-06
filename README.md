@@ -1,99 +1,98 @@
-# Ahar
+# Freshly
 
-An elegant restaurant ordering, rewards, and reservations PWA built with
-Next.js 14 (App Router), Supabase (auth + Postgres with Row-Level Security), and
-Stripe.
+Freshly is a full-stack restaurant ordering app. Users can create an account, browse the menu, add items to a cart, pay with Stripe, and check out. From there they can save favorite dishes, book a table, and earn loyalty points on every order. Every table in the database is locked down with Row-Level Security, so no user can ever see or touch another user's orders, favorites, or reservations.
 
 ## Features
 
-- **Storefront** — seasonal menu grouped by category, add-to-cart, favorites.
-- **Cart & checkout** — persistent cart (Redux + localStorage), Stripe Elements
-  payment, tip and fulfillment selection.
-- **Accounts** — email/password, magic-link, and phone (OTP) sign-in; profile
-  management; password change.
-- **Orders** — full order history with itemized breakdowns.
-- **Rewards** — points per dollar spent, tiers, and perks.
-- **Reservations** — book and track tables.
-- **PWA** — installable, offline app shell via service worker.
-- **Security-first** — see [`SECURITY.md`](./SECURITY.md).
+- Browse a categorized menu and add items to a cart
+- Create an account and log in (email/password, magic link, or phone OTP)
+- Pay securely with Stripe at checkout
+- Save dishes to a favorites list
+- Book and track table reservations
+- Earn loyalty points per order and track your tier
+- View full order history with itemized breakdowns
+- Installable PWA with an offline app shell
 
-## Tech stack
+## Tech Stack
 
-Next.js 14 · React 18 · Supabase · Stripe · Redux Toolkit · Framer Motion ·
-lucide-react · react-hot-toast
+- Frontend: React, Next.js (App Router), Redux Toolkit, Framer Motion
+- Backend: Next.js Route Handlers (Node.js)
+- Database: PostgreSQL (Supabase), Row-Level Security
+- Authentication: Supabase Auth (email/password, magic link, phone OTP)
+- Payments: Stripe
+- Deployment: Vercel
 
-## Getting started
+## Project Structure
 
-### 1. Install
+```text
+src/app/                   Routes (App Router)
+src/app/(auth)/            Login, signup, magic-link, phone, change-password
+src/app/api/               Route handlers (rate-limited, auth-checked)
+src/components/            Nav, cart drawer, menu cards, auth shell
+src/lib/supabase/          Client (anon key), server (RLS-scoped), admin (service role)
+src/lib/repositories/      Data access layer, explicit column selects
+src/lib/security/          Rate limiting, input validation
+src/lib/stripe/            Server and client Stripe helpers
+src/store/                 Redux cart slice
+supabase/migrations/       Schema, RLS policies, seed data, rewards RPC
+```
+
+## Running Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/autobot433/RestaurantApp.git
+cd RestaurantApp
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Configure environment
+Set up your environment:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Fill in your values. Only `NEXT_PUBLIC_*` keys are exposed to the browser;
-everything else is server-only (never commit `.env.local`).
-
-### 3. Set up the database
-
-Apply the migrations to your Supabase project (they create the schema, enable
-Row-Level Security with per-user policies, seed a sample menu, and add the
-rewards RPC):
+Add your environment variables to `.env.local` (see below), then set up the database:
 
 ```bash
-supabase link --project-ref <your-ref>
+supabase link --project-ref <your-project-ref>
 supabase db push
 ```
 
-Enable the auth methods you want (email, phone) in the Supabase dashboard. Phone
-sign-in requires an SMS provider.
-
-### 4. Stripe (payments)
-
-- Set `STRIPE_SECRET_KEY` and `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`.
-- Create a webhook endpoint pointing at `/api/stripe/webhook` for the
-  `payment_intent.succeeded` event, and set `STRIPE_WEBHOOK_SECRET`.
-- Locally: `stripe listen --forward-to localhost:3000/api/stripe/webhook`.
-
-### 5. Run
+Run the app:
 
 ```bash
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run start    # serve the production build
-npm run lint
+npm run dev
 ```
 
-> Without Supabase configured, the storefront still renders a bundled **sample
-> menu** so you can preview the UI; auth, orders, and payments require the
-> backend keys above.
+Then open:
 
-## Project structure
+```text
+http://localhost:3000
+```
 
-```
-src/
-  app/                     # routes (App Router)
-    (auth)/                # login, signup, magic-link, phone, change-password
-    api/                   # rate-limited, auth-checked route handlers
-    menu, checkout, orders, favorites, rewards, reservations, account
-  components/              # Nav, CartDrawer, MenuItemCard, auth shell, providers
-  lib/
-    supabase/              # client (anon), server (RLS), admin (service role)
-    repositories/          # data access (explicit column selects)
-    security/              # rateLimit, validation
-    stripe/                # server + client Stripe helpers
-  store/                   # Redux cart slice
-supabase/migrations/       # schema, RLS policies, seed, rewards RPC
-```
+> Without Supabase configured, the storefront still renders a bundled sample menu so you can preview the UI — auth, orders, and payments require the environment variables below.
+
+## Environment Variables
+
+This project uses the following environment variables:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+
+See `.env.example` for a template with descriptions of each.
 
 ## Security
 
-Security is a first-class concern in this project. Row-Level Security, server-
-side auth and pricing, rate limiting, input validation, secret hygiene, and a
-verified Content-Security-Policy are all documented and mapped to their
-implementation in [`SECURITY.md`](./SECURITY.md).
+Row-Level Security, server-side auth, server-computed pricing, rate limiting, and a verified Content-Security-Policy are all documented in [`SECURITY.md`](./SECURITY.md).

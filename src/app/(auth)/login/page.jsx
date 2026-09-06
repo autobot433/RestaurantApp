@@ -60,7 +60,7 @@ function LoginForm() {
       footer={
         <>
           <span>
-            New to Ahar? <Link href="/signup">Create an account</Link>
+            New to Freshly? <Link href="/signup">Create an account</Link>
           </span>
           <div className={authStyles.altRow}>
             <Link href="/login/magic-link">Email me a link</Link>

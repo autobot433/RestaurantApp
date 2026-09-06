@@ -1,5 +1,5 @@
 -- =============================================================================
--- Ahar — reward points RPC
+-- Freshly — reward points RPC
 -- =============================================================================
 -- Awarding points is a privileged operation: a client must never be able to
 -- inflate its own balance. This SECURITY DEFINER function performs the write

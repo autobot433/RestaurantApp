@@ -21,7 +21,7 @@ export default async function AccountPage() {
   return (
     <div className="container">
       <header className="page-header">
-        <p className="eyebrow">Your Ahar</p>
+        <p className="eyebrow">Your Account</p>
         <h1 className="section-title">Account</h1>
         <p className="muted">{user.email}</p>
       </header>

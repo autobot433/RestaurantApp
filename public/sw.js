@@ -1,10 +1,10 @@
 /* 
-  Placeholder service worker for Ahar PWA.
+  Placeholder service worker for Freshly PWA.
   In production, this file can be generated or overridden by next-pwa
   or a custom service worker build step.
 */
 
-const CACHE_NAME = "ahar-static-v1";
+const CACHE_NAME = "freshly-static-v1";
 const URLS_TO_CACHE = ["/", "/manifest.json"];
 
 self.addEventListener("install", (event) => {

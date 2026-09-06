@@ -1,5 +1,5 @@
 -- =============================================================================
--- Ahar — core schema
+-- Freshly — core schema
 -- =============================================================================
 -- Design notes
 --   * Money is always stored as integer cents (never floats) to avoid rounding

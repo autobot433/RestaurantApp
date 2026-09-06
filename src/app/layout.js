@@ -21,14 +21,14 @@ const fontBody = Jost({
 
 export const metadata = {
   title: {
-    default: "Ahar — Modern Dining, Elevated",
-    template: "%s · Ahar",
+    default: "Freshly — Fresh, Fast, Simple Ordering",
+    template: "%s · Freshly",
   },
   description:
-    "Ahar — elegant online ordering, loyalty rewards, and reservations for the modern table.",
+    "Freshly — order food, earn rewards, and book a table, all in one place.",
   manifest: "/manifest.json",
-  applicationName: "Ahar",
-  appleWebApp: { capable: true, title: "Ahar", statusBarStyle: "black-translucent" },
+  applicationName: "Freshly",
+  appleWebApp: { capable: true, title: "Freshly", statusBarStyle: "black-translucent" },
 };
 
 export const viewport = {
@@ -75,9 +75,9 @@ function SiteFooter() {
         }}
       >
         <span style={{ fontFamily: "var(--font-display-stack)", fontSize: "1.4rem", color: "var(--cream)" }}>
-          Ahar
+          Freshly
         </span>
-        <span>© {new Date().getFullYear()} Ahar. Crafted with care.</span>
+        <span>© {new Date().getFullYear()} Freshly. Crafted with care.</span>
       </div>
     </footer>
   );

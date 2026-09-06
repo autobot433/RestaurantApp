@@ -50,8 +50,8 @@ export default function Nav() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <Link href="/" className={styles.brand} aria-label="Ahar home">
-          Ahar
+        <Link href="/" className={styles.brand} aria-label="Freshly home">
+          Freshly
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary">

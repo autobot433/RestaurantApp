@@ -1,7 +1,7 @@
 {
-  "name": "Ahar",
-  "short_name": "Ahar",
-  "description": "Ahar – elegant ordering, rewards, and reservations experience.",
+  "name": "Freshly",
+  "short_name": "Freshly",
+  "description": "Freshly – elegant ordering, rewards, and reservations experience.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

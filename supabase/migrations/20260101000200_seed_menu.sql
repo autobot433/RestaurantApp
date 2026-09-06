@@ -1,5 +1,5 @@
 -- =============================================================================
--- Ahar — seed catalog data (idempotent)
+-- Freshly — seed catalog data (idempotent)
 -- =============================================================================
 -- Safe to run repeatedly: categories key off their unique slug, items off a
 -- deterministic uuid derived from (category slug + item name).

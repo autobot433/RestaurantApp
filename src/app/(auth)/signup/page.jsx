@@ -74,7 +74,7 @@ export default function SignupPage() {
 
   return (
     <AuthShell
-      title="Join Ahar"
+      title="Join Freshly"
       subtitle="Create an account to start ordering and earning rewards."
       footer={
         <span>
