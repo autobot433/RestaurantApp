@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.name { font-size: 1.35rem; }
+.price {
+  font-family: var(--font-display-stack);
+  font-size: 1.2rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.desc { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+.actions { display: flex; align-items: center; gap: 10px; }
+.actions .btn { flex: 1; }
+
+.heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+.heart:hover { color: var(--gold); border-color: rgba(212,175,55,0.4); }
+.heartOn { color: var(--gold); border-color: var(--gold); }

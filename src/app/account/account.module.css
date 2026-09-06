@@ -1,0 +1,26 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.panel { padding: 28px; }
+.panelTitle { font-size: 1.5rem; margin-bottom: 18px; }
+
+.side { display: flex; flex-direction: column; gap: 20px; }
+
+.points {
+  font-family: var(--font-display-stack);
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.links { display: flex; flex-direction: column; gap: 12px; }
+.links a { color: var(--cream); transition: color 150ms ease; }
+.links a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+}

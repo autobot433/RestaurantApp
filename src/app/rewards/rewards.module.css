@@ -1,0 +1,56 @@
+.hero {
+  padding: 36px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.points {
+  font-family: var(--font-display-stack);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.tier { text-transform: capitalize; margin-top: 4px; }
+
+.progressWrap { width: 100%; }
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--charcoal2);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+  border-radius: 999px;
+  transition: width 600ms ease;
+}
+.maxed { color: var(--gold); font-family: var(--font-display-stack); font-size: 1.4rem; }
+
+.perks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.perk { padding: 22px; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 24px; }
+  .perks { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .perks { grid-template-columns: 1fr; }
+}

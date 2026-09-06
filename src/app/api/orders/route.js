@@ -1,49 +1,18 @@
-import { NextResponse } from "next/server";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
-import { getOrdersForUser, createOrder } from "@/lib/repositories/orders";
+import { requireUser, withErrorHandling } from "@/lib/api";
+import { getOrdersForUser } from "@/lib/repositories/orders";
+import { enforceRateLimit } from "@/lib/security/rateLimit";
 
-export async function GET() {
-  const supabase = getSupabaseServerClient();
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+// List the signed-in user's orders.
+export const GET = withErrorHandling(async (req) => {
+  const limited = enforceRateLimit(req, "orders:GET", { limit: 60, windowMs: 60_000 });
+  if (limited) return limited;
 
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const auth = await requireUser();
+  if (auth.response) return auth.response;
 
-  try {
-    const orders = await getOrdersForUser(session.user.id);
-    return NextResponse.json({ orders });
-  } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-}
-
-export async function POST(req) {
-  const supabase = getSupabaseServerClient();
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const body = await req.json();
-  const { items, total } = body;
-
-  try {
-    const order = await createOrder({
-      userId: session.user.id,
-      items,
-      total,
-    });
-    return NextResponse.json({ order }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-}
-
+  const orders = await getOrdersForUser(auth.user.id);
+  return Response.json({ orders });
+});

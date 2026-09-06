@@ -1,0 +1,30 @@
+.empty { padding: 60px 0; text-align: center; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card { padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.name { font-size: 1.3rem; }
+.price { font-family: var(--font-display-stack); color: var(--gold); font-size: 1.15rem; white-space: nowrap; }
+
+.actions { display: flex; align-items: center; gap: 10px; margin-top: auto; }
+.actions .btn { flex: 1; }
+
+.remove {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.remove:hover { color: var(--red); border-color: var(--red); }
+
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
